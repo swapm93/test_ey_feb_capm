@@ -1,0 +1,105 @@
+###Get Service document
+http://localhost:4004/odata/v4/CatalogService
+
+
+###Get Service metadata
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+
+###Get Employee Data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+
+###Get Sigle Employee Data : TODO: take an id from last call and paste at end
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197A7FB
+
+###Insert data into employees
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+
+{
+  "nameFirst": "Christi",
+  "nameMiddle": null,
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": null,
+  "email": "chris@anubhavtrainings.com",
+  "loginName": "RONALDOCR",
+  "Currency_code": "USD",
+  "salaryAmount": 76239,
+  "accountNumber": "9988776655",
+  "bankId": "121000358",
+  "bankName": "HDFC Bank"
+}
+
+###Update employee data
+
+
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/90f10209-2973-4f4a-b4fd-7321f96604cf
+Content-Type: application/json
+
+
+{
+    "salaryAmount":1000000,
+    "Currency_code":"EUR",
+    "bankId":"123456789"
+}
+
+
+###Get the employee
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/90f10209-2973-4f4a-b4fd-7321f96604cf
+
+
+###Delete the data
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/90f10209-2973-4f4a-b4fd-7321f96604cf
+
+###Load data chunk by chunk - pagination
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+
+###Load data chunk by chunk2 - pagination
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2
+
+###Load data chunk by chunk3 - pagination// same as chunk2
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=0
+###Filter data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=bankName eq 'My Bank of San Francisco'
+
+
+###filter by the pattern search
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameLast,'Wall')
+
+
+###Count the records
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###Get All the Purchase orders
+http://localhost:4004/odata/v4/CatalogService/POs
+
+
+###Get single order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052?$expand=Items
+
+
+###Get CDS data for product
+http://localhost:4004/odata/v4/CatalogService/ProductView/74867AD200E41EDBA5D8B06B26EB4052?$expand=To_Items
+
+
+###Boost action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052/boost
+Content-Type: application/json
+
+
+{}
+
+###Calling the functions
+http://localhost:4004/odata/v4/CatalogService/getLargestOrder()
+
+###Send the service call
+http://localhost:4004/odata/v4/MyService/ReadEmployeeSrv
+
+###Send the service V2 
+http://localhost:4004/odata/v2/MyService/ReadEmployeeSrv
+
