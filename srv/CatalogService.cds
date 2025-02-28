@@ -34,7 +34,7 @@ service CatalogService @(path: 'CatalogService') {
         action boost() returns POs;
     };
 
-
+//my new changes
     // entity ItemView as projection on CDSViews.ItemView;
     // entity ProductView as projection on CDSViews.ProductView;
     function getLargestOrder() returns POs;
