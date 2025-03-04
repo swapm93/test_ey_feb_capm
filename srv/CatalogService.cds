@@ -3,9 +3,20 @@ using { anubhav.db.master, anubhav.db.transaction } from '../db/datamodel';
 
 
 service CatalogService @(path: 'CatalogService') {
+<<<<<<< HEAD
 //mynewchanges
 @readonly
     entity EmployeeSet as projection on master.employees;
+=======
+
+// @readonly
+    // entity EmployeeSet as projection on master.employees;
+    entity EmployeeSet @(restrict: [ 
+                        { grant: ['READ'], to: 'Viewer', where: 'bankName = $user.BankName' },
+                        { grant: ['WRITE'], to: 'Admin' }
+                        ]) as projection on master.employees;
+
+>>>>>>> 008346a (App Router)
     entity BusinessPartnerSet as projection on master.businesspartner;
     entity AddressSet as projection on master.address;
     entity ProductSet as projection on master.product;
